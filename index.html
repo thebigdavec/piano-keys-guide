@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano Scales Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <h1>Piano Scales Finger Chart</h1>
+        <div class="options">
+            <div class="option-group" <div id="octaves">
+                <h2>
+                    Octaves
+                </h2>
+                <label><input type="radio" name="octaves" value="1" />1</label>
+                <label><input type="radio" name="octaves" value="2" checked />2</label>
+            </div>
+            <div id="keys">
+                <div class="option-group">
+                    <label class="block center">Scale&nbsp;
+                        <select name="modes" id="modeSelect">
+                            <option value="major">Major</option>
+                            <option value="naturalMinor">Natural Minor</option>
+                            <option value="harmonicMinor">Harmonic Minor</option>
+                            <option value="melodicMinor">Melodic Minor</option>
+                        </select>
+                    </label>
+                    <label><input type="radio" name="key" value="C" checked />C</label>
+                    <label><input type="radio" name="key" value="G" />G</label>
+                    <label><input type="radio" name="key" value="D" />D</label>
+                    <label><input type="radio" name="key" value="A" />A</label>
+                    <label><input type="radio" name="key" value="E" />E</label>
+                    <label><input type="radio" name="key" value="B" />B</label>
+                    <label><input type="radio" name="key" value="F" />F</label>
+                    <span class="disabled">Gb</span>
+                    <span class="disabled">Db</span>
+                    <span class="disabled">Ab</span>
+                    <span class="disabled">Eb</span>
+                    <span class="disabled">Bb</span>
+                </div>
+            </div>
+        </div>
+        <h2 id="key">Key</h2>
+        <div id="chartPlaceholder">The chart for this key is coming soon...</div>
+        <div id="chartDisplay">
+            <p class="banner banner--top">Right Hand</p>
+            <div id="rightHandNotes" class="notes"></div>
+            <div id="rightHandContainer" class="fingerchart"></div>
+            <div id="leftHandContainer" class="fingerchart"></div>
+            <div id="leftHandNotes" class="notes"></div>
+            <p class="banner banner--bottom">Left Hand</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

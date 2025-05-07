@@ -1,0 +1,139 @@
+body {
+  font-family: sans-serif;
+  color-scheme: light dark;
+  text-align: center;
+  background-color: light-dark(white, black);
+  color: light-dark(black, white);
+}
+
+#keys {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#chartPlaceholder {
+  display: none;
+  margin-block-end: 2em;
+}
+
+#rightHandNotes {
+  :first-child {
+    border-top-left-radius: 1rem;
+  }
+  :last-child {
+    border-top-right-radius: 1rem;
+  }
+}
+
+#leftHandNotes {
+  :first-child {
+    border-bottom-left-radius: 1rem;
+  }
+  :last-child {
+    border-bottom-right-radius: 1rem;
+  }
+}
+
+.banner {
+  background-color: #8888;
+  margin: 0;
+  padding: 0.5rem 2rem;
+  font-size: 2rem;
+  width: fit-content;
+  margin-inline: auto;
+
+  &.banner--top {
+    border-radius: 1rem 1rem 0 0;
+    box-shadow: 0 -0.5em 0.25em -0.3em #0008 inset;
+  }
+
+  &.banner--bottom {
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: 0 0.5em 0.25em -0.3em #0008 inset;
+  }
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.option-group {
+  background-color: #8888;
+  padding: 0.6em 1.2em;
+  border-radius: 0.6em;
+
+  select {
+    font-size: inherit;
+    background-color: inherit;
+    border-radius: 0.3em;
+    padding: 0.2em;
+    margin-block-end: 0.5em;
+    text-align: center;
+  }
+
+  .block {
+    display: block;
+  }
+
+  .center {
+    margin-inline: auto;
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin: 0 0 0.5em;
+    padding-block-end: 0.5em;
+    border-block-end: 1px solid light-dark(#888, #000);
+    box-shadow: 0 0.75em 0.5em -0.5em #0004;
+  }
+
+  label {
+    display: inline-block;
+  }
+
+  span.disabled {
+    margin-inline-start: 1.5rem;
+    opacity: 0.5;
+  }
+}
+
+.fingerchart {
+  font-size: clamp(1rem, calc(0.1rem + 1.5vw), 3rem);
+  display: flex;
+  justify-content: center;
+  > * {
+    display: grid;
+    width: 2em;
+    aspect-ratio: 1;
+    place-items: center;
+    outline: 1px solid color-mix(in srgb, currentcolor 50%, transparent 50%);
+  }
+}
+
+.notes {
+  font-size: clamp(1rem, calc(0.1rem + 1.5vw), 3rem);
+  display: flex;
+  justify-content: center;
+  min-height: 0.25em;
+  > * {
+    display: grid;
+    width: 2em;
+    padding-block: 0.1em;
+    place-items: center;
+    outline: 1px solid color-mix(in srgb, currentcolor 50%, transparent 50%);
+    background-color: #aaa;
+    color: black;
+
+    &.black {
+      background-color: #222;
+      color: white;
+    }
+  }
+}
