@@ -19,15 +19,15 @@ const selectedScale = () =>	modeSelect.querySelector(`option[value=${modeSelect.
 const numOctaves = () => octaves.querySelector('input[name="octaves"]:checked').value
 
 
-const majorChart1 = {
+const chart1 = {
 	right: [1, 2, 3, 1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 2, 1],
 	left: [5, 4, 3, 2, 1, 3, 2, 1, 2, 3, 1, 2, 3, 4, 5]
 };
-const majorChart2 = {
+const chart2 = {
 	right: [1, 2, 3, 4, 1, 2, 3, 4, 3, 2, 1, 4, 3, 2, 1],
 	left: [5, 4, 3, 2, 1, 3, 2, 1, 2, 3, 1, 2, 3, 4, 5]
 };
-const majorChart3 = {
+const chart3 = {
 	right: [1, 2, 3, 1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 2, 1],
 	left: [4, 3, 2, 1, 4, 3, 2, 1, 2, 3, 4, 1, 2, 3, 4]
 };
@@ -35,29 +35,37 @@ const majorChart3 = {
 const charts = {
 	C: {
 		major: {
-			chart: majorChart1,
+			chart: chart1,
 			notes: ["C", "D", "E", "F", "G", "A", "B", "A", "G", "F", "E", "D", "C"]
 		},
 		'natural minor': {
-			chart: majorChart1,
+			chart: chart1,
 			notes: ["C", "D", "Eb", "F", "G", "Ab", "Bb", "Ab", "G", "F", "Eb", "D", "C"]
 		}
 	},
 	G: {
 		major: {
-			chart: majorChart1,
+			chart: chart1,
 			notes: ["G", "A", "B", "C", "D", "E", "F#", "E", "D", "C", "B", "A", "G"]
+		},
+		'natural minor': {
+			chart: chart1,
+			notes: ["G", "A", "Bb", "C", "D", "Eb", "F", "Eb", "D", "C", "Bb", "A", "G"]
 		}
 	},
 	D: {
 		major: {
-			chart: majorChart1,
+			chart: chart1,
 			notes: ["D", "E", "F#", "G", "A", "B", "C#", "B", "A", "G", "F#", "E", "D"]
+		},
+		'natural minor': {
+			chart: chart1,
+			notes: ["D", "E", "F", "G", "A", "Bb", "C", "Bb", "A", "G", "F", "E", "D"]
 		}
 	},
 	A: {
 		major: {
-			chart: majorChart1,
+			chart: chart1,
 			notes: [
 				"A",
 				"B",
@@ -73,11 +81,15 @@ const charts = {
 				"B",
 				"A"
 			]
-		}
+		},
+        'natural minor': {
+			chart: chart1,
+			notes: ["A", "B", "C", "D", "E", "F", "G", "F", "E", "D", "C", "B", "A"]
+		},
 	},
 	E: {
 		major: {
-			chart: majorChart1,
+			chart: chart1,
 			notes: [
 				"E",
 				"F#",
@@ -93,11 +105,29 @@ const charts = {
 				"F#",
 				"E"
 			]
+		},
+		'natural minor': {
+			chart: chart1,
+			notes: [
+				"E",
+				"F#",
+				"G",
+				"A",
+				"B",
+				"C",
+				"D",
+				"C",
+				"B",
+				"A",
+				"G",
+				"F#",
+				"E"
+			]
 		}
 	},
 	B: {
 		major: {
-			chart: majorChart3,
+			chart: chart3,
 			notes: [
 				"B",
 				"C#",
@@ -113,11 +143,29 @@ const charts = {
 				"C#",
 				"B"
 			]
+		},
+		'natural minor': {
+			chart: chart3,
+			notes: [
+				"B",
+				"C#",
+				"D",
+				"E",
+				"F#",
+				"G",
+				"A",
+				"G",
+				"F#",
+				"E",
+				"D",
+				"C#",
+				"B"
+			]
 		}
 	},
 	F: {
 		major: {
-			chart: majorChart2,
+			chart: chart2,
 			notes: ["F", "G", "A", "Bb", "C", "D", "E", "D", "C", "Bb", "A", "G", "F"]
 		}
 	}
