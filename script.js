@@ -34,6 +34,7 @@ const chart3 = {
 
 const charts = {
 	C: {
+        relativeMinor: 'A',
 		major: {
 			chart: chart1,
 			notes: ["C", "D", "E", "F", "G", "A", "B", "A", "G", "F", "E", "D", "C"]
@@ -44,6 +45,7 @@ const charts = {
 		}
 	},
 	G: {
+        relativeMinor: 'E',
 		major: {
 			chart: chart1,
 			notes: ["G", "A", "B", "C", "D", "E", "F#", "E", "D", "C", "B", "A", "G"]
@@ -54,6 +56,7 @@ const charts = {
 		}
 	},
 	D: {
+        relativeMinor: 'B',
 		major: {
 			chart: chart1,
 			notes: ["D", "E", "F#", "G", "A", "B", "C#", "B", "A", "G", "F#", "E", "D"]
@@ -64,6 +67,7 @@ const charts = {
 		}
 	},
 	A: {
+        relativeMinor: 'F#',
 		major: {
 			chart: chart1,
 			notes: [
@@ -88,6 +92,7 @@ const charts = {
 		},
 	},
 	E: {
+        relativeMinor: 'C#',
 		major: {
 			chart: chart1,
 			notes: [
@@ -126,6 +131,7 @@ const charts = {
 		}
 	},
 	B: {
+        relativeMinor: 'G#',
 		major: {
 			chart: chart3,
 			notes: [
@@ -164,9 +170,14 @@ const charts = {
 		}
 	},
 	F: {
+        relativeMinor: 'D',
 		major: {
 			chart: chart2,
 			notes: ["F", "G", "A", "Bb", "C", "D", "E", "D", "C", "Bb", "A", "G", "F"]
+		},
+		'natural minor': {
+			chart: chart2,
+			notes: ["F", "G", "Ab", "Bb", "C", "Db", "Eb", "Db", "C", "Bb", "Ab", "G", "F"]
 		}
 	}
 };
@@ -255,7 +266,7 @@ function buildChart(chart, numberOctaves = 1) {
     }
 
     chartPlaceholder.style.display = 'none'
-    chartDisplay.style.display = 'block'
+    chartDisplay.style.display = 'grid'
 	addNotes(chart, numberOctaves);
 	addFingers(chart, numberOctaves);
 }
