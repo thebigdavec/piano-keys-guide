@@ -9,58 +9,54 @@
 </head>
 
 <body>
-    <div>
-        <h1>Piano Scales Finger Chart</h1>
-        <div class="options">
+    <h1>Piano Scales Finger Chart</h1>
 
-            <div id="keys">
-                <div class="option-group">
-                    <div class="flex">
-                        <label class="key-radio"><input type="radio" name="key" value="C" checked />C</label>
-                        <label class="key-radio"><input type="radio" name="key" value="G" />G</label>
-                        <label class="key-radio"><input type="radio" name="key" value="D" />D</label>
-                        <label class="key-radio"><input type="radio" name="key" value="A" />A</label>
-                        <label class="key-radio"><input type="radio" name="key" value="E" />E</label>
-                        <label class="key-radio"><input type="radio" name="key" value="B" />B</label>
-                        <label class="key-radio"><input type="radio" name="key" value="F" />F</label>
-                        <!-- <span class="disabled">Gb</span> -->
-                        <!-- <span class="disabled">Db</span> -->
-                        <!-- <span class="disabled">Ab</span> -->
-                        <!-- <span class="disabled">Eb</span> -->
-                        <!-- <span class="disabled">Bb</span> -->
-                    </div>
+    <h2 id="key">Key</h2>
 
-                    <div class="flex">
-                        <label>Scale&nbsp;
-                            <select name="modes" id="modeSelect">
-                                <option value="major">Major</option>
-                                <option value="naturalMinor">Natural Minor</option>
-                                <!-- <option value="harmonicMinor">Harmonic Minor</option> -->
-                                <!-- <option value="melodicMinor">Melodic Minor</option> -->
-                            </select>
-                        </label>
-                        <div class="separator"></div>
-                        <div class="option-roup" id="octaves">
-                            Octaves&nbsp;
-                            <label><input type="radio" name="octaves" value="1" />1</label>
-                            <label><input type="radio" name="octaves" value="2" checked />2</label>
-                        </div>
+    <div id="chartPlaceholder">The chart for this key is coming soon...</div>
+    <div id="chartDisplay">
+        <p class="banner banner--top">Right Hand</p>
+        <div id="rightHandNotes" class="notes"></div>
+        <div id="rightHandContainer" class="fingerchart"></div>
+        <div id="leftHandContainer" class="fingerchart"></div>
+        <div id="leftHandNotes" class="notes"></div>
+        <p class="banner banner--bottom">Left Hand</p>
+    </div>
+    <div class="options">
+        <div id="keys">
+            <div class="option-group">
+                <div class="flex">
+                    <label class="key-radio"><input type="radio" name="key" value="C" checked />C</label>
+                    <label class="key-radio"><input type="radio" name="key" value="G" />G</label>
+                    <label class="key-radio"><input type="radio" name="key" value="D" />D</label>
+                    <label class="key-radio"><input type="radio" name="key" value="A" />A</label>
+                    <label class="key-radio"><input type="radio" name="key" value="E" />E</label>
+                    <label class="key-radio"><input type="radio" name="key" value="B" />B</label>
+                    <label class="key-radio"><input type="radio" name="key" value="F" />F</label>
+                    <!-- <span class="disabled">Gb</span> -->
+                    <!-- <span class="disabled">Db</span> -->
+                    <!-- <span class="disabled">Ab</span> -->
+                    <!-- <span class="disabled">Eb</span> -->
+                    <!-- <span class="disabled">Bb</span> -->
+                </div>
+                <div class="flex">
+                    <label>Scale&nbsp;
+                        <select name="modes" id="modeSelect">
+                            <option value="major">Major</option>
+                            <option value="naturalMinor">Natural Minor</option>
+                            <!-- <option value="harmonicMinor">Harmonic Minor</option> -->
+                            <!-- <option value="melodicMinor">Melodic Minor</option> -->
+                        </select>
+                    </label>
+                    <div class="separator"></div>
+                    <div id="octaves">
+                        <label for="twoOctaves">Octaves</label>
+                        <label><input type="checkbox" id="twoOctaves" checked /><span>1</span><span>2</span></label>
                     </div>
                 </div>
             </div>
         </div>
-        <h2 id="key">Key</h2>
-        <div id="chartPlaceholder">The chart for this key is coming soon...</div>
-        <div id="chartDisplay">
-            <p class="banner banner--top">Right Hand</p>
-            <div id="rightHandNotes" class="notes"></div>
-            <div id="rightHandContainer" class="fingerchart"></div>
-            <div id="leftHandContainer" class="fingerchart"></div>
-            <div id="leftHandNotes" class="notes"></div>
-            <p class="banner banner--bottom">Left Hand</p>
-        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 

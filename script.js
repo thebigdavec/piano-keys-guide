@@ -9,14 +9,14 @@ keys.addEventListener("click", (e) => {
 
 modeSelect.addEventListener("change", () => buildChart(currentChart(selectedKey(), selectedScale()), numOctaves()))
 
-octaves.addEventListener("click", (e) => {
-	buildChart(currentChart(selectedKey(), selectedScale()), numOctaves());
-});
+twoOctaves.addEventListener("change", () => {
+ 	buildChart(currentChart(selectedKey(), selectedScale()), numOctaves())
+})
 
 const selectedKey = () => keys.querySelector('input[name="key"]:checked').value
 const selectedScale = () =>	modeSelect.querySelector(`option[value=${modeSelect.value}]`)
 .textContent.toLowerCase()
-const numOctaves = () => octaves.querySelector('input[name="octaves"]:checked').value
+const numOctaves = () => twoOctaves.checked ? 2 : 1
 
 
 const chart1 = {

@@ -1,15 +1,32 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
   color-scheme: light dark;
   text-align: center;
   background-color: light-dark(white, black);
   color: light-dark(black, white);
+  min-height: 100dvh;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+  place-content: center;
+}
+
+h1,
+h2 {
+  line-height: 1;
+  margin: 0;
 }
 
 .flex {
   display: flex;
   align-items: center;
-  gap: 1em;
+  gap: 0.75em;
   justify-content: center;
 }
 
@@ -50,24 +67,20 @@ body {
 }
 
 .banner {
-  box-sizing: border-box;
-  background-color: #8888;
+  background-color: light-dark(#ddd, #333);
+  border: 1px solid light-dark(#666, transparent);
   margin: 0;
-  padding: 0.5rem 2rem;
-  font-size: inherit;
-  /* width: fit-content; */
-  /* margin-inline: auto; */
-  width: 100%;
+  padding: 0.333em 0.75em;
   grid-column: 2;
 
   &.banner--top {
     border-radius: 1rem 1rem 0 0;
-    box-shadow: 0 -0.5em 0.25em -0.3em #0008 inset;
+    box-shadow: 0 -0.333em 0.25em -0.3em #0008 inset;
   }
 
   &.banner--bottom {
     border-radius: 0 0 1rem 1rem;
-    box-shadow: 0 0.5em 0.25em -0.3em #0008 inset;
+    box-shadow: 0 0.333em 0.25em -0.3em #0008 inset;
   }
 }
 
@@ -82,8 +95,9 @@ body {
 .option-group {
   display: grid;
   gap: 1em;
-  background-color: #8888;
+  background-color: light-dark(#ddd, #333);
   padding: 0.6em 1.2em;
+  border: 1px solid light-dark(#666, transparent);
   border-radius: 0.6em;
 
   select {
@@ -102,14 +116,6 @@ body {
     margin-inline: auto;
   }
 
-  h2 {
-    font-size: 1rem;
-    margin: 0 0 0.5em;
-    padding-block-end: 0.5em;
-    border-block-end: 1px solid light-dark(#888, #000);
-    box-shadow: 0 0.75em 0.5em -0.5em #0004;
-  }
-
   label {
     display: inline-block;
 
@@ -121,13 +127,59 @@ body {
       padding: 0.3em 0.5em;
       border-radius: 0.3em;
       background-color: light-dark(#fff3, #0003);
-      color: light-dark(#0008, #fff8);
+      color: light-dark(#0006, #fff8);
       border: 1px solid black;
     }
-    &:has(input:checked) {
+
+    &:has(input[type='radio']:checked) {
       color: light-dark(#fff, #fff);
       background-color: green;
     }
+  }
+
+  label:has(#twoOctaves) {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    text-align: right;
+    width: 2.8em;
+    border: 1px solid black;
+    border-radius: 3em;
+    padding-block: 0.15em;
+    color: light-dark(#0006, #fff8);
+    background-color: light-dark(#eee, #222);
+    &::after {
+      content: '1';
+      position: absolute;
+      display: grid;
+      place-items: center;
+      left: 0.1em;
+      top: 0.1em;
+      width: 1.25em;
+      height: 1.25em;
+      background-color: green;
+      border-radius: 2.4em;
+      color: white;
+    }
+  }
+  label:has(#twoOctaves:checked) {
+    content: '1';
+    text-align: left;
+    &::after {
+      content: '2';
+      left: unset;
+      right: 0.1em;
+    }
+  }
+
+  #octaves {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+  #twoOctaves {
+    display: none;
   }
 
   span.disabled {
@@ -147,8 +199,8 @@ body {
     width: 2em;
     aspect-ratio: 1;
     place-items: center;
-    background-color: light-dark(#fffa, #000a);
-    outline: 1px solid color-mix(in srgb, currentcolor 50%, transparent 50%);
+    background-color: light-dark(#ddd, #111);
+    outline: 1px solid #888d;
   }
 }
 
@@ -167,12 +219,12 @@ body {
     width: 2em;
     padding-block: 0.1em;
     place-items: center;
-    outline: 1px solid color-mix(in srgb, currentcolor 50%, transparent 50%);
-    background-color: #aaa;
+    outline: 1px solid #888d;
+    background-color: #eee;
     color: black;
 
     &.black {
-      background-color: #222;
+      background-color: #000;
       color: white;
     }
   }
