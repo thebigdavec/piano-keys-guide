@@ -103,6 +103,7 @@ h2 {
   select {
     font-size: inherit;
     background-color: light-dark(#fff3, #0003);
+    border-color: black;
     border-radius: 0.3em;
     padding: 0.2em;
     text-align: center;
@@ -141,14 +142,14 @@ h2 {
     position: relative;
     display: flex;
     justify-content: center;
-    gap: 0.5em;
+    gap: 0.7em;
     text-align: right;
     width: 2.8em;
     border: 1px solid black;
     border-radius: 3em;
     padding-block: 0.15em;
-    color: light-dark(#0006, #fff8);
     background-color: light-dark(#eee, #222);
+
     &::after {
       content: '1';
       position: absolute;
@@ -159,17 +160,19 @@ h2 {
       width: 1.25em;
       height: 1.25em;
       background-color: green;
-      border-radius: 2.4em;
       color: white;
+      border: 1px solid darkgreen;
+      border-radius: 2.4em;
+      transition: translate 150ms ease-in;
     }
   }
+
   label:has(#twoOctaves:checked) {
     content: '1';
     text-align: left;
     &::after {
       content: '2';
-      left: unset;
-      right: 0.1em;
+      translate: 1.25em 0;
     }
   }
 
