@@ -50,19 +50,19 @@ h2 {
 
 #rightHandContainer {
   :first-child {
-    border-top-left-radius: 1rem;
+    border-top-left-radius: 0.3em;
   }
   :last-child {
-    border-top-right-radius: 1rem;
+    border-top-right-radius: 0.3em;
   }
 }
 
 #leftHandContainer {
   :first-child {
-    border-bottom-left-radius: 1rem;
+    border-bottom-left-radius: 0.3em;
   }
   :last-child {
-    border-bottom-right-radius: 1rem;
+    border-bottom-right-radius: 0.3em;
   }
 }
 
@@ -196,6 +196,7 @@ h2 {
   font-size: clamp(1rem, calc(0.1rem + 1.5vw), 3rem);
   display: flex;
   justify-content: center;
+  align-items: center;
   grid-column: 1 / -1;
   line-height: 1;
   > * {
