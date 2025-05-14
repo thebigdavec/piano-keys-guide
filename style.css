@@ -207,9 +207,9 @@ h2 {
       display: inline-block;
       font-size: 0.6em;
       opacity: 0.7;
-      color: rgb(181, 181, 255);
+      color: light-dark(rgb(0, 0, 132), rgb(181, 181, 255));
       &.up {
-        color: yellow;
+        color: light-dark(rgb(134, 36, 0), yellow);
         transform: translateY(-0.5em);
       }
     }
@@ -239,5 +239,25 @@ h2 {
       background-color: #000;
       color: white;
     }
+  }
+}
+
+.wide-enough {
+  display: block;
+}
+.not-wide-enough {
+  display: none;
+}
+
+@media (width < 932px) {
+  .wide-enough {
+    display: none;
+  }
+  .not-wide-enough {
+    display: block;
+  }
+  .if-wide-enough,
+  #octaves.if-wide-enough {
+    display: none;
   }
 }

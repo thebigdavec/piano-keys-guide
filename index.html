@@ -14,14 +14,15 @@
     <h2 id="key">Key</h2>
 
     <div id="chartPlaceholder">The chart for this key is coming soon...</div>
+
     <div id="chartDisplay">
         <p class="banner banner--top">Right Hand</p>
         <div id="rightHandContainer" class="fingerchart"></div>
         <div id="rightHandNotes" class="notes"></div>
-        <!-- <div id="leftHandNotes" class="notes"></div> -->
         <div id="leftHandContainer" class="fingerchart"></div>
         <p class="banner banner--bottom">Left Hand</p>
     </div>
+
     <div class="options">
         <div id="keys">
             <div class="option-group">
@@ -48,8 +49,8 @@
                             <!-- <option value="melodicMinor">Melodic Minor</option> -->
                         </select>
                     </label>
-                    <div class="separator"></div>
-                    <div id="octaves">
+                    <div class="separator wide-enough"></div>
+                    <div id="octaves" class="if-wide-enough">
                         <label for="twoOctaves">Octaves</label>
                         <label><input type="checkbox" id="twoOctaves" checked /><span>1</span><span>2</span></label>
                     </div>
@@ -57,6 +58,11 @@
             </div>
         </div>
     </div>
+    <p class="not-wide-enough">
+        Can only show one octave on small screens.
+        <span id="notLandscape"><br />Try rotating
+            your device.</span>
+    </p>
     <script src="script.js"></script>
 </body>
 

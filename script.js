@@ -1,23 +1,5 @@
 const showNotes = true;
 
-keys.addEventListener("click", (e) => {
-	const key = e.target.closest("input")?.value;
-	if (key) {
-		buildChart(currentChart(selectedKey(), selectedScale()), numOctaves());
-	}
-});
-
-modeSelect.addEventListener("change", () => buildChart(currentChart(selectedKey(), selectedScale()), numOctaves()))
-
-twoOctaves.addEventListener("change", () => {
- 	buildChart(currentChart(selectedKey(), selectedScale()), numOctaves())
-})
-
-const selectedKey = () => keys.querySelector('input[name="key"]:checked').value
-const selectedScale = () =>	modeSelect.querySelector(`option[value=${modeSelect.value}]`)
-.textContent.toLowerCase()
-const numOctaves = () => twoOctaves.checked ? 2 : 1
-
 
 const chart1 = {
 	right: [1, 2, 3, 1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 2, 1],
@@ -183,6 +165,50 @@ const charts = {
 };
 const currentChart = (key, scale) => charts[key][scale] || null;
 
+let innerWidth
+let wideEnough = true
+
+function updateWidth() {
+	width = window.innerWidth
+	let height = window.innerHeight
+	
+	if (wideEnough && width < 932) {
+		wideEnough = false
+		buildChart(currentChart(selectedKey(), selectedScale()), numOctaves())
+	}
+	if (!wideEnough && width >= 932) {
+		wideEnough = true
+		buildChart(currentChart(selectedKey(), selectedScale()), numOctaves())
+	}
+	if (width > height) {
+		notLandscape.style.display = 'none'
+	} else {
+		notLandscape.style.display = 'revert'
+	}
+}
+
+window.addEventListener('resize', updateWidth)
+
+keys.addEventListener("click", (e) => {
+	const key = e.target.closest("input")?.value;
+	if (key) {
+		buildChart(currentChart(selectedKey(), selectedScale()), numOctaves());
+	}
+});
+
+modeSelect.addEventListener("change", () => buildChart(currentChart(selectedKey(), selectedScale()), numOctaves()))
+
+twoOctaves.addEventListener("change", () => {
+ 	buildChart(currentChart(selectedKey(), selectedScale()), numOctaves())
+})
+
+const selectedKey = () => keys.querySelector('input[name="key"]:checked').value
+const selectedScale = () =>	modeSelect.querySelector(`option[value=${modeSelect.value}]`)
+.textContent.toLowerCase()
+const numOctaves = () => (twoOctaves.checked && wideEnough) ? 2 : 1
+
+updateWidth()
+
 function addFinger(chart, index, options = {rootnote: false, arrow: null, yPos: 0}) {
 	const {rootnote, arrow, yPos} = options
 
@@ -295,6 +321,7 @@ function buildChart(chart, numberOctaves = 1) {
 
     chartPlaceholder.style.display = 'none'
     chartDisplay.style.display = 'grid'
+
 	addNotes(chart, numberOctaves);
 	addFingers(chart, numberOctaves);
 }
