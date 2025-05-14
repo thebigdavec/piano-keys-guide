@@ -262,25 +262,26 @@ function addNotes(chart, numberOctaves) {
 }
 
 function addFingers(chart, numberOctaves) {
-	let margin = (numberOctaves + 1) * 7;
+	console.log(numberOctaves)
+	let margin = 20;
 
 	// fingers ->
 	for (let octave = 0; octave < numberOctaves; octave++) {
 		for (let i = 0; i < 7; i++) {
 			addFinger(chart, i, {rootnote: i === 0 && octave === 1, margin, arrow: (i + octave > 0 && 'up')});
-			margin -= 1;
+			margin -= 2 / numberOctaves
 		}
 	}
 
 	// top note
 	addFinger(chart, 7, {arrow: 'down', margin});
-	margin += 1
+	margin += 2 / numberOctaves
 
 	// <-
 	for (let octave = 0; octave < numberOctaves; octave++) {
 		for (let i = 0; i < 7; i++) {
 			addFinger(chart, i + 8, {rootnote: i === 6 && octave < numberOctaves - 1, margin, arrow: (octave * 7 + i) < (numberOctaves * 7 - 1) && 'down'});
-			margin += 1
+			margin += 2 / numberOctaves
 		}
 	}
 }
