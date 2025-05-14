@@ -195,8 +195,6 @@ h2 {
 .fingerchart {
   font-size: clamp(1rem, calc(0.1rem + 1.5vw), 3rem);
   display: flex;
-  justify-content: center;
-  align-items: center;
   grid-column: 1 / -1;
   line-height: 1;
   > * {
@@ -206,8 +204,14 @@ h2 {
     background-color: light-dark(#9ad, #113);
     outline: 1px solid #888d;
     span {
+      display: inline-block;
       font-size: 0.6em;
       opacity: 0.7;
+      color: rgb(181, 181, 255);
+      &.up {
+        color: yellow;
+        transform: translateY(-0.5em);
+      }
     }
   }
 }

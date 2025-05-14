@@ -183,16 +183,13 @@ const charts = {
 };
 const currentChart = (key, scale) => charts[key][scale] || null;
 
-function addFinger(chart, index, options = {rootnote: false, arrow: null, margin: 0}) {
-	const {rootnote, arrow, margin} = options
+function addFinger(chart, index, options = {rootnote: false, arrow: null, yPos: 0}) {
+	const {rootnote, arrow, yPos} = options
 
 	const rightdiv = document.createElement("div");
 	const leftdiv = document.createElement("div");
 
-	const padScale = .04;
-
-	rightdiv.style =  `padding-top: ${margin * padScale}em`
-	leftdiv.style =  `padding-top: ${margin * padScale}em`
+	const padScale = .01;
 
 	let rightHand = rootnote ? '1' : chart.chart.right[index]
 	let leftHand = rootnote ? '1' : chart.chart.left[index]
@@ -200,7 +197,7 @@ function addFinger(chart, index, options = {rootnote: false, arrow: null, margin
 
 	switch (arrow) {
 		case 'up':
-			dirEl = `<span>&uarr;</span>`
+			dirEl = `<span class="up">&uarr;</span>`
 			rightHand += dirEl
 			leftHand += dirEl
 			break
@@ -213,8 +210,8 @@ function addFinger(chart, index, options = {rootnote: false, arrow: null, margin
 			break
 	}
 
-	rightdiv.innerHTML = rightHand
-	leftdiv.innerHTML = leftHand
+	rightdiv.innerHTML = `<div style="translate: 0 ${yPos * padScale + 1}em">${rightHand}</div>`
+	leftdiv.innerHTML = `<div style="translate: 0 ${yPos * padScale + 1}em">${leftHand}</div>`
 
 	rightHandContainer.appendChild(rightdiv);
 	leftHandContainer.appendChild(leftdiv);
@@ -262,26 +259,26 @@ function addNotes(chart, numberOctaves) {
 }
 
 function addFingers(chart, numberOctaves) {
-	console.log(numberOctaves)
-	let margin = 20;
+	let yPos = 0;
+	const yIncrement = 100 / (numberOctaves * 8)
 
 	// fingers ->
 	for (let octave = 0; octave < numberOctaves; octave++) {
 		for (let i = 0; i < 7; i++) {
-			addFinger(chart, i, {rootnote: i === 0 && octave === 1, margin, arrow: (i + octave > 0 && 'up')});
-			margin -= 2 / numberOctaves
+			addFinger(chart, i, {rootnote: i === 0 && octave === 1, yPos, arrow: (i + octave > 0 && 'up')});
+			yPos -= yIncrement
 		}
 	}
 
 	// top note
-	addFinger(chart, 7, {arrow: 'down', margin});
-	margin += 2 / numberOctaves
+	addFinger(chart, 7, {arrow: 'down', yPos});
+	yPos += yIncrement
 
 	// <-
 	for (let octave = 0; octave < numberOctaves; octave++) {
 		for (let i = 0; i < 7; i++) {
-			addFinger(chart, i + 8, {rootnote: i === 6 && octave < numberOctaves - 1, margin, arrow: (octave * 7 + i) < (numberOctaves * 7 - 1) && 'down'});
-			margin += 2 / numberOctaves
+			addFinger(chart, i + 8, {rootnote: i === 6 && octave < numberOctaves - 1, yPos, arrow: (octave * 7 + i) < (numberOctaves * 7 - 1) && 'down'});
+			yPos += yIncrement
 		}
 	}
 }
@@ -293,7 +290,6 @@ function buildChart(chart, numberOctaves = 1) {
     if (!chart) {
         chartPlaceholder.style.display = 'block'
         chartDisplay.style.display = 'none'
-        console.log(selectedScale())
         return
     }
 
