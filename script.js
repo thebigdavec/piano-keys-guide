@@ -183,12 +183,38 @@ const charts = {
 };
 const currentChart = (key, scale) => charts[key][scale] || null;
 
-function addFinger(chart, index, rootnote = false) {
+function addFinger(chart, index, options = {rootnote: false, arrow: null, margin: 0}) {
+	const {rootnote, arrow, margin} = options
+
 	const rightdiv = document.createElement("div");
 	const leftdiv = document.createElement("div");
 
-	rightdiv.textContent = rootnote ? "1" : chart.chart.right[index];
-	leftdiv.textContent = rootnote ? "1" : chart.chart.left[index];
+	const padScale = .04;
+
+	rightdiv.style =  `padding-top: ${margin * padScale}em`
+	leftdiv.style =  `padding-top: ${margin * padScale}em`
+
+	let rightHand = rootnote ? '1' : chart.chart.right[index]
+	let leftHand = rootnote ? '1' : chart.chart.left[index]
+	let dirEl
+
+	switch (arrow) {
+		case 'up':
+			dirEl = `<span>&uarr;</span>`
+			rightHand += dirEl
+			leftHand += dirEl
+			break
+		case 'down':
+			dirEl = `<span>&darr;</span>`
+			rightHand += dirEl
+			leftHand += dirEl
+			break
+		default:
+			break
+	}
+
+	rightdiv.innerHTML = rightHand
+	leftdiv.innerHTML = leftHand
 
 	rightHandContainer.appendChild(rightdiv);
 	leftHandContainer.appendChild(leftdiv);
@@ -207,13 +233,13 @@ function addNote(chart, index) {
 	leftdiv.textContent = chart.notes[index];
 
 	rightHandNotes.appendChild(rightdiv);
-	leftHandNotes.appendChild(leftdiv);
+	// leftHandNotes.appendChild(leftdiv);
 }
 
 function clearChart() {
 	leftHandContainer.textContent = "";
 	rightHandContainer.textContent = "";
-	leftHandNotes.textContent = "";
+	// leftHandNotes.textContent = "";
 	rightHandNotes.textContent = "";
 }
 
@@ -236,20 +262,25 @@ function addNotes(chart, numberOctaves) {
 }
 
 function addFingers(chart, numberOctaves) {
+	let margin = (numberOctaves + 1) * 7;
+
 	// fingers ->
 	for (let octave = 0; octave < numberOctaves; octave++) {
 		for (let i = 0; i < 7; i++) {
-			addFinger(chart, i, i === 0 && octave === 1);
+			addFinger(chart, i, {rootnote: i === 0 && octave === 1, margin, arrow: (i + octave > 0 && 'up')});
+			margin -= 1;
 		}
 	}
 
 	// top note
-	addFinger(chart, 7);
+	addFinger(chart, 7, {arrow: 'down', margin});
+	margin += 1
 
 	// <-
 	for (let octave = 0; octave < numberOctaves; octave++) {
 		for (let i = 0; i < 7; i++) {
-			addFinger(chart, i + 8, i === 6 && octave < numberOctaves - 1);
+			addFinger(chart, i + 8, {rootnote: i === 6 && octave < numberOctaves - 1, margin, arrow: octave * 7 + i < 13 && 'down'});
+			margin += 1
 		}
 	}
 }
