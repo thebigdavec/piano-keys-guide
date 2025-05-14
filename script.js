@@ -265,7 +265,7 @@ function addFingers(chart, numberOctaves) {
 	// fingers ->
 	for (let octave = 0; octave < numberOctaves; octave++) {
 		for (let i = 0; i < 7; i++) {
-			addFinger(chart, i, {rootnote: i === 0 && octave === 1, yPos, arrow: (i + octave > 0 && 'up')});
+			addFinger(chart, i, {rootnote: i === 0 && octave === 1, yPos, arrow: 'up'});
 			yPos -= yIncrement
 		}
 	}
