@@ -279,7 +279,7 @@ function addFingers(chart, numberOctaves) {
 	// <-
 	for (let octave = 0; octave < numberOctaves; octave++) {
 		for (let i = 0; i < 7; i++) {
-			addFinger(chart, i + 8, {rootnote: i === 6 && octave < numberOctaves - 1, margin, arrow: octave * 7 + i < 13 && 'down'});
+			addFinger(chart, i + 8, {rootnote: i === 6 && octave < numberOctaves - 1, margin, arrow: (octave * 7 + i) < (numberOctaves * 7 - 1) && 'down'});
 			margin += 1
 		}
 	}
