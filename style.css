@@ -23,6 +23,24 @@ h2 {
   margin: 0;
 }
 
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1ch;
+}
+
+.panel {
+  display: grid;
+  gap: 1em;
+  width: fit-content;
+  background-color: light-dark(#ddd, #333);
+  border: 1px solid light-dark(#666, transparent);
+  padding: 0.5em 0.8em;
+  margin-inline: auto;
+  border-radius: 0.6em;
+}
+
 .flex {
   display: flex;
   align-items: center;
